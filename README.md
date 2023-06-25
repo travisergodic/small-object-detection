@@ -3,6 +3,8 @@
 ## [比賽資訊](https://tbrain.trendmicro.com.tw/Competitions/Details/25)
 本競賽為空拍無人機偵測地面小物體之競賽，共有 4 個偵測類別（`car`, `hov`, `person`, `motocycle`），主辦方提供 1000 筆訓練資料，每張圖片的資料標籤為 txt 檔，txt 檔的每行分別代表圖片內物體對應的 `class`, `x`, `y`, `w`, `h`。
 
+![alt text](./assets/img0001.png "Title")
+
 ## EDA
 1. **圖片尺寸分佈**: 881 張 `(1080, 1920)` 大小的圖片；119 張 `(720, 1344)` 大小的圖片。
 2. 存在面積為 0 的物體，需進行過濾。

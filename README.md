@@ -9,27 +9,20 @@
 
 詳見 `notebooks/1-EDA.ipynb`
 
-## 標籤轉換
-將標籤轉換為 `yolov5`，詳見 `notebooks/2-convert_annotation.ipynb`。
+## 前處理
+1. **標籤轉換**：將標籤轉換為 `yolov5`，詳見 `notebooks/2-convert_annotation.ipynb`。
+2. **resize 圖片**：圖片大小統一 resize 為 `(1080, 1920)` 大小，詳見 `notebooks/3-resize_image_to_1080_1920.ipynb`。
+3. **訓練、測試分割**：對資料進行訓練、測試切分 `(0.85:0.15)`，詳見 `notebooks/4-train_test_split_yolov5_dataset.ipynb`。
+4. **SAHI 切分圖片**：使用 `SAHI` 套件對 **圖片** & **標籤** 同時進行切分，並將切分後的資料放入模型訓練，由於 `SAHI` 僅支援切分 **COCO** 格式標籤，因此，切分 COCO 格式標籤後，會將 COCO 格式標籤轉換為 yolov5 格式標籤。
+   + 切分 COCO 格式標籤詳見 `notebooks/6-sahi_coco_slice.ipynb`。
+   + COCO 格式標籤轉換為 yolov5 格式標籤詳見 `notebooks/8-coco_to_yolov5.ipynb`。
+我們將使用下列參數對資料進行切分:
 
-## resize 圖片
-圖片大小統一 resize 為 `(1080, 1920)` 大小，詳見 `notebooks/3-resize_image_to_1080_1920.ipynb`。
-
-## 訓練、測試分割
-對資料進行訓練、測試切分 `(0.85:0.15)`，詳見 `notebooks/4-train_test_split_yolov5_dataset.ipynb`。
-
-## SAHI 切分圖片
-使用 `SAHI` 套件對 **圖片** & **標籤** 進行切分，並將切分後的資料放入模型訓練，由於 `SAHI` 僅支援切分 **COCO** 格式標籤，因此，會切分 COCO 格式標籤後，再將 COCO 格式標籤轉換為 yolov5 格式標籤。
-1. 切分 COCO 格式標籤詳見 `notebooks/6-sahi_coco_slice.ipynb`。
-2. COCO 格式標籤轉換為 yolov5 格式標籤詳見 `notebooks/8-coco_to_yolov5.ipynb`。
-
-最後，使用不同方式的切分方法進行訓練:
-
-| name  |  slice_height   | slice_width  | overlap_height_ratio | overlap_width_ratio |
-| ----  |  ----  |  ----  |  ----  |  ----  |
-| data1 | 1080   | 1100   | 0.25   | 0.25 |
-| data2 | 600    | 752    | 0.20   | 0.20 |
-| data3 | 624    | 600    | 0.25   | 0.25 |
+    | name  |  slice_height   | slice_width  | overlap_height_ratio | overlap_width_ratio |
+    | ----  |  ----  |  ----  |  ----  |  ----  |
+    | dataset1 | 1080   | 1100   | 0.25   | 0.25 |
+    | dataset2 | 600    | 752    | 0.20   | 0.20 |
+    | dataset3 | 624    | 600    | 0.25   | 0.25 |
 
 
 

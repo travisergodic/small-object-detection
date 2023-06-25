@@ -25,11 +25,11 @@
 
 最後，使用不同方式的切分方法進行訓練:
 
-| name |  slice_height   | slice_width  | overlap_height_ratio | overlap_width_ratio |
-| data1 |  ----  |  ----  |  ----  |  ----  |
-| data2 | 1080  | 1100 | 0.25  | 0.25 |
-| data3 | 600  | 752 | 0.20  | 0.20 |
-| data4 | 624  | 600 | 0.25  | 0.25 |
+| name  |  slice_height   | slice_width  | overlap_height_ratio | overlap_width_ratio |
+| ----  |  ----  |  ----  |  ----  |  ----  |
+| data1 | 1080   | 1100   | 0.25   | 0.25 |
+| data2 | 600    | 752    | 0.20   | 0.20 |
+| data3 | 624    | 600    | 0.25   | 0.25 |
 
 
 

@@ -25,11 +25,11 @@
 
 最後，使用不同方式的切分方法進行訓練:
 
-|  slice_height   | slice_width  | overlap_height_ratio | overlap_width_ratio |
-|  ----  |  ----  |  ----  |  ----  |
-| 1080  | 1100 | 0.25  | 0.25 |
-| 600  | 752 | 0.20  | 0.20 |
-| 624  | 600 | 0.25  | 0.25 |
+| name |  slice_height   | slice_width  | overlap_height_ratio | overlap_width_ratio |
+| data1 |  ----  |  ----  |  ----  |  ----  |
+| data2 | 1080  | 1100 | 0.25  | 0.25 |
+| data3 | 600  | 752 | 0.20  | 0.20 |
+| data4 | 624  | 600 | 0.25  | 0.25 |
 
 
 
@@ -85,7 +85,7 @@
 
     + **下載預訓練模型權重檔**
     + **配置文件**
-        ```
+        ```yaml
         data/coco128.yaml
 
         # YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
@@ -129,7 +129,7 @@
 
     + **下載預訓練模型權重檔**
     + **配置文件**
-        ```
+        ```yaml
         # data/coco128.yaml
 
         # YOLOv5 🚀 by Ultralytics, GPL-3.0 license
@@ -155,15 +155,15 @@
     + **執行指令**
       + **tph-yolov5l-xs-1**
         ```
-        python train.py --img 1280 --adam --batch 4 --epochs 80 \
+        $ python train.py --img 1280 --adam --batch 4 --epochs 80 \
                         --data ./data/coco128.yaml --weights ./weights/yolov5l-xs-1.pt \ 
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-xs-tph.yaml \
                         --name v5l-xs-tph
         ```
        
-   + **tph-yolov5l-xs-2**
+      + **tph-yolov5l-xs-2**
         ```
-        python train.py --img 1280 --adam --batch 4 --epochs 120 \
+        $ python train.py --img 1280 --adam --batch 4 --epochs 120 \
                         --data ./data/coco128.yaml --weights ./weights/yolov5l-xs-2.pt \ 
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-tph-plus.yaml \
                         --name v5l-tph-plus

@@ -1,6 +1,6 @@
 # 玉山無人飛行載具計數器比賽
 
-## 比賽資訊
+## [比賽資訊](https://tbrain.trendmicro.com.tw/Competitions/Details/25)
 本競賽為空拍無人機偵測地面小物體之競賽，共有 4 個偵測類別（`car`, `hov`, `person`, `motocycle`），主辦方提供 1000 筆訓練資料，每張圖片的資料標籤為 txt 檔，txt 檔的每行分別代表圖片內物體對應的 `class`, `x`, `y`, `w`, `h`。
 
 ## EDA
@@ -27,7 +27,7 @@
 
 
 ## 模型訓練
-1. **PPYOLOE**
+1. **[PPYOLOE](https://github.com/PaddlePaddle/PaddleYOLO)**
     + **安裝 PaddleYOLO 套件**
         ```
         $ python -m pip install paddlepaddle-gpu==2.4.1.post116 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
@@ -37,6 +37,11 @@
         $ pip install .
         ``` 
     + **下載預訓練模型權重檔**
+      ```
+      $ mkdir weights/
+      $ cd weights/
+      $ wget https://bj.bcebos.com/v1/paddledet/models/ppyoloe_crn_l_80e_sliced_visdrone_640_025.pdparams
+      ```
     + **配置文件**:
         ```yaml
         # configs/smalldet/_base_/visdrone_sliced_640_025_detection.yml
@@ -68,7 +73,7 @@
                             worker_num=${worker_num} --eval 
         ```
 
-2. **YOLOv5**
+2. **[YOLOv5](https://github.com/ultralytics/yolov5)**
     + **安裝 YOLOv5 套件**
         ```
         $ git clone https://github.com/ultralytics/yolov5.git
@@ -77,6 +82,14 @@
         ```
 
     + **下載預訓練模型權重檔**
+      ```
+      mkdir weights/
+      cd weights/
+      # yolov5l
+      wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l.pt
+      # yolov5l6
+      wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l6.pt
+      ```
     + **配置文件**
         ```yaml
         data/coco128.yaml
@@ -104,12 +117,25 @@
         3 : motorcycle   
         ```
     + **執行指令**
-        ```
-        $ python train.py --data coco128.yaml --epoch 150 --cfg hub/yolov5l6.yaml \
-                        --weights ./weights/yolov5l6.pt --batch-size 6 --img 1280
-        ```
+        + 使用 `slice_yolov5_600_624_0.25_0.25` 資料訓練
+            ```
+            $ epoch =150
+            $ batch_size = 16
+            $ img_size = 640
+            $ python train.py --data coco128.yaml --epoch ${epoch} --cfg yolov5l.yaml \
+                            --weights ./weights/yolov5l.pt --batch-size ${batch_size} --img ${img_size}
+            ```
 
-3. **TPH-YOLOv5**
+        + 使用 `slice_yolov5_1100_1080_0.25_0.25` 資料訓練
+            ```
+            $ epoch = 150 
+            $ batch_size = 6
+            $ img_size = 1280
+            $ python train.py --data coco128.yaml --epoch ${epoch} --cfg hub/yolov5l6.yaml \
+                            --weights ./weights/yolov5l6.pt --batch-size ${batch_size} --img ${img_size}
+            ```
+
+3. **[TPH-YOLOv5](https://github.com/cv516Buaa/tph-yolov5)**
     + **安裝 TPH-YOLOv5 套件**
         ```
         $ git clone https://github.com/cv516Buaa/tph-yolov5.git
@@ -121,6 +147,12 @@
         ```
 
     + **下載預訓練模型權重檔**
+      ```
+      mkdir weights/
+      cd weights/
+      gdown https://drive.google.com/u/0/uc?id=1nGeKl3qOa26v3haGSDmLjeA0cjDD9p61&export=download
+      gdown https://drive.google.com/u/0/uc?id=1VmORvxNtvMVMvmY7cCwvp0BoL6L3RGiq&export=download
+      ```
     + **配置文件**
         ```yaml
         # data/coco128.yaml
@@ -148,7 +180,10 @@
     + **執行指令**
       + **tph-yolov5l-xs-1**
         ```
-        $ python train.py --img 1280 --adam --batch 4 --epochs 80 \
+        $ epochs = 150
+        $ batch_size = 4
+        $ img_size = 1280
+        $ python train.py --img ${img_size} --adam --batch ${batch_size} --epochs ${epochs} \
                         --data ./data/coco128.yaml --weights ./weights/yolov5l-xs-1.pt \ 
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-xs-tph.yaml \
                         --name v5l-xs-tph
@@ -156,7 +191,10 @@
        
       + **tph-yolov5l-xs-2**
         ```
-        $ python train.py --img 1280 --adam --batch 4 --epochs 120 \
+        $ epochs = 150
+        $ batch_size = 4
+        $ img_size = 1280
+        $ python train.py --img ${img_size} --adam --batch ${batch_size} --epochs ${epochs} \
                         --data ./data/coco128.yaml --weights ./weights/yolov5l-xs-2.pt \ 
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-tph-plus.yaml \
                         --name v5l-tph-plus

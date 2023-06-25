@@ -1,0 +1,4 @@
+0 : car
+1 : hov
+2 : person
+3 : motorcycle

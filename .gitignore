@@ -1,0 +1,5 @@
+*.json
+slice_coco_1100_1080_0.25_0.25/*
+yolov5_new/*
+images/*
+labels/*

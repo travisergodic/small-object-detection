@@ -1,0 +1,7 @@
+pandas
+cv2
+matplotlib
+imagesize
+globox
+sahi
+fiftyone

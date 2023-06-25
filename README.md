@@ -92,7 +92,7 @@
       ```
     + **配置文件**
         ```yaml
-        data/coco128.yaml
+        # data/coco128.yaml
 
         # YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
         # COCO128 dataset https://www.kaggle.com/ultralytics/coco128 (first 128 images from COCO train2017) by Ultralytics
@@ -199,8 +199,3 @@
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-tph-plus.yaml \
                         --name v5l-tph-plus
         ```
-
-
-
-
-

@@ -52,7 +52,7 @@
 
         TrainDataset:
             !COCODataSet
-            : train2017
+            image_dir: train2017
             anno_path: annotations/train2017.json
             dataset_dir: path/to/dataset/dir
             data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']

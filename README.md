@@ -201,3 +201,4 @@
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-tph-plus.yaml \
                         --name v5l-tph-plus
         ```
+    ![alt text](./assets/img0095_tph-yolov5_pred.png "img001")

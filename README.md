@@ -74,6 +74,7 @@
                             -o LearningRate.base_lr=${base_lr} epoch=${epoch} \ 
                             worker_num=${worker_num} --eval 
         ```
+    ![alt text](./assets/img0095_ppyoloe_pred.png "img001")
 
 2. **[YOLOv5](https://github.com/ultralytics/yolov5)**
     + **安裝 YOLOv5 套件**

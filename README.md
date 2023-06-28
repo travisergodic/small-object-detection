@@ -26,6 +26,8 @@
     | dataset2 | 600    | 752    | 0.20   | 0.20 |
     | dataset3 | 624    | 600    | 0.25   | 0.25 |
 
+[切分資料下載路徑](https://drive.google.com/drive/folders/1KXQHxJMM8QZ6owpE1qQQVqyLbCaRw_LD?usp=drive_link)
+
 
 
 ## 模型訓練
@@ -75,6 +77,7 @@
                             worker_num=${worker_num} --eval 
         ```
     ![alt text](./assets/img0095_ppyoloe_pred.png "img001")
+    [訓練模型權重檔](https://drive.google.com/drive/folders/1bG0Utqn9-pPQv53VqX-CWtZz26Hz2XVJ?usp=drive_link)
 
 2. **[YOLOv5](https://github.com/ultralytics/yolov5)**
     + **安裝 YOLOv5 套件**
@@ -128,6 +131,7 @@
             $ python train.py --data coco128.yaml --epoch ${epoch} --cfg yolov5l.yaml \
                             --weights ./weights/yolov5l.pt --batch-size ${batch_size} --img ${img_size}
             ```
+        [訓練模型權重檔](https://drive.google.com/drive/folders/14xmKmrLfKItW0JOxMKtedSB_-ItFQe3n?usp=drive_link)
 
         + 使用 `slice_yolov5_1100_1080_0.25_0.25` 資料訓練
             ```
@@ -137,6 +141,7 @@
             $ python train.py --data coco128.yaml --epoch ${epoch} --cfg hub/yolov5l6.yaml \
                             --weights ./weights/yolov5l6.pt --batch-size ${batch_size} --img ${img_size}
             ```
+        [訓練模型權重檔](https://drive.google.com/drive/folders/11pYZO_TGLV7cnhBc9i38lft9Op2-kJ91?usp=drive_link)
 
 3. **[TPH-YOLOv5](https://github.com/cv516Buaa/tph-yolov5)**
     + **安裝 TPH-YOLOv5 套件**
@@ -191,6 +196,7 @@
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-xs-tph.yaml \
                         --name v5l-xs-tph
         ```
+        [訓練模型權重檔](https://drive.google.com/drive/folders/11AzgXmNwIhzS5Tw_e_ssOeWbbmg588Z0?usp=drive_link)
        
       + **tph-yolov5l-xs-2**
         ```
@@ -202,4 +208,6 @@
                         --hyp data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-tph-plus.yaml \
                         --name v5l-tph-plus
         ```
+        [訓練模型權重檔](https://drive.google.com/drive/folders/1FujS9iIIlVOCC6cxTJOFBR8aQaedRceZ?usp=drive_link)
+
     ![alt text](./assets/img0095_tph-yolov5_pred.png "img001")
